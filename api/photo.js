@@ -88,3 +88,19 @@ module.exports = async (req, res) => {
         });
     }
 };
+
+// 2. 메모 저장 및 불러오기 기능
+window.addEventListener('load', function() {
+  // 페이지가 열릴 때 기존 메모가 있으면 가져옴
+  const savedMemo = localStorage.getItem(window.location.href);
+  if (savedMemo) {
+    document.getElementById('memo-input').value = savedMemo;
+  }
+});
+
+function saveMemo() {
+  const memoText = document.getElementById('memo-input').value;
+  // 현재 페이지 주소를 이름표로 해서 브라우저에 저장
+  localStorage.setItem(window.location.href, memoText);
+  alert("메모가 브라우저에 저장되었습니다! $ \checkmark $");
+}
